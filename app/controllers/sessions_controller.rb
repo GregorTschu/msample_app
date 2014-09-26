@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   def new
   end
 
-<<<<<<< HEAD
+
 	def create
 		user = User.find_by(email: params[:session][:email].downcase)
 		if user && user.authenticate(params[:session][:password])
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 			render 'new'
 		end
 	end
-=======
+
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
@@ -27,8 +27,10 @@ class SessionsController < ApplicationController
       render 'new'
     end
   end
->>>>>>> Chapter8
+
 
   def destroy
+    sign_out
+    redirect_to root_url
   end
 end
